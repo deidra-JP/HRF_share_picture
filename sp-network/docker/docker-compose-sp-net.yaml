@@ -136,7 +136,7 @@ services:
       - 7151:7151
       - 17151:17151
     networks:
-      - ps
+      - sp
 
   peer0.org3.example.com:
     container_name: peer0.org3.example.com
@@ -168,14 +168,14 @@ services:
         - /var/run/docker.sock:/host/var/run/docker.sock
         - ../organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/msp:/etc/hyperledger/fabric/msp
         - ../organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls:/etc/hyperledger/fabric/tls
-        - peer0.org2.example.com:/var/hyperledger/production
+        - peer0.org3.example.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
       - 7251:7251
       - 17251:17251
     networks:
-      - ps
+      - sp
 
   cli:
     container_name: cli
@@ -200,4 +200,4 @@ services:
       - peer0.org2.example.com
       - peer0.org3.example.com
     networks:
-      - ps
+      - sp
