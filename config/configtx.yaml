@@ -16,11 +16,11 @@ Organizations:
 
     # SampleOrg defines an MSP using the sampleconfig. It should never be used
     # in production but may be used as a template for other definitions.
-    - &spOrg
+    - &SampleOrg
         # Name is the key by which this org will be referenced in channel
         # configuration transactions.
         # Name can include alphanumeric characters as well as dots and dashes.
-        Name: spOrg
+        Name: SampleOrg
 
         # SkipAsForeign can be set to true for org definitions which are to be
         # inherited from the orderer system channel during channel creation.  This
@@ -32,7 +32,7 @@ Organizations:
 
         # ID is the key by which this org's MSP definition will be referenced.
         # ID can include alphanumeric characters as well as dots and dashes.
-        ID: spOrg
+        ID: SampleOrg
 
         # MSPDir is the filesystem path which contains the MSP configuration.
         MSPDir: msp
@@ -40,25 +40,25 @@ Organizations:
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
         #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
-        Policies: &spOrgPolicies
+        Policies: &SampleOrgPolicies
             Readers:
                 Type: Signature
-                Rule: "OR('spOrg.member')"
+                Rule: "OR('SampleOrg.member')"
                 # If your MSP is configured with the new NodeOUs, you might
                 # want to use a more specific rule like the following:
                 # Rule: "OR('SampleOrg.admin', 'SampleOrg.peer', 'SampleOrg.client')"
             Writers:
                 Type: Signature
-                Rule: "AND('Org1.peer', 'Org2.peer', 'Org3.peer', OR('Org1.admin', 'Org2.admin'))"
+                Rule: "OR('SampleOrg.member')"
                 # If your MSP is configured with the new NodeOUs, you might
                 # want to use a more specific rule like the following:
                 # Rule: "OR('SampleOrg.admin', 'SampleOrg.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org1.admin', 'Org2.admin')"
+                Rule: "OR('SampleOrg.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "AND('Org1.member', 'Org2.member', 'Org3.member')"
+                Rule: "OR('SampleOrg.member')"
 
         # OrdererEndpoints is a list of all orderers this org runs which clients
         # and peers may to connect to to push transactions and receive blocks respectively.

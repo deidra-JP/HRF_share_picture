@@ -58,7 +58,7 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 	return nil
 }
 
-// CreateCar adds a new car to the world state with given details
+// CreatePicture adds a new picture to the world state with given details
 func (s *SmartContract) CreatePicture(ctx contractapi.TransactionContextInterface, pictureNumber string, make string, category string, subcategory string, owner string) error {
 	picture := Picture{
 		Make:        make,
@@ -72,7 +72,7 @@ func (s *SmartContract) CreatePicture(ctx contractapi.TransactionContextInterfac
 	return ctx.GetStub().PutState(pictureNumber, pictureAsBytes)
 }
 
-// QueryCar returns the car stored in the world state with given id
+// QueryPicture returns the picture stored in the world state with given id
 func (s *SmartContract) QueryPicture(ctx contractapi.TransactionContextInterface, pictureNumber string) (*Picture, error) {
 	pictureAsBytes, err := ctx.GetStub().GetState(pictureNumber)
 
@@ -90,7 +90,7 @@ func (s *SmartContract) QueryPicture(ctx contractapi.TransactionContextInterface
 	return picture, nil
 }
 
-// QueryAllCars returns all cars found in world state
+// QueryAllPictures returns all Pictures found in world state
 func (s *SmartContract) QueryAllPictures(ctx contractapi.TransactionContextInterface) ([]QueryResult, error) {
 	startKey := ""
 	endKey := ""
@@ -121,7 +121,7 @@ func (s *SmartContract) QueryAllPictures(ctx contractapi.TransactionContextInter
 	return results, nil
 }
 
-// ChangeCarOwner updates the owner field of car with given id in world state
+// ChangePictureOwner updates the owner field of car with given id in world state
 func (s *SmartContract) ChangePictureOwner(ctx contractapi.TransactionContextInterface, pictureNumber string, newOwner string) error {
 	picture, err := s.QueryPicture(ctx, pictureNumber)
 
