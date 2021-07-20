@@ -12,11 +12,11 @@ peer:
 
     # The peer id provides a name for this peer instance and is used when
     # naming docker resources.
-    id: jdoe
+    id: sppeer
 
     # The networkId allows for logical separation of networks and is used when
     # naming docker resources.
-    networkId: dev
+    networkId: fabric_sp
 
     # The Address at local network interface this Peer will listen on.
     # By default, it will listen on all network interfaces
@@ -330,7 +330,7 @@ peer:
             Security:
 
     # Path on the file system where peer will find MSP local configurations
-    mspConfigPath: msp
+    mspConfigPath: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
 
     # Identifier of the local MSP
     # ----!!!!IMPORTANT!!!-!!!IMPORTANT!!!-!!!IMPORTANT!!!!----
@@ -339,7 +339,7 @@ peer:
     # to match the name of one of the MSPs in each of the channel
     # that this peer is a member of. Otherwise this peer's messages
     # will not be identified as valid by other nodes.
-    localMspId: SampleOrg
+    localMspId: OrdererMSP
 
     # CLI common client config options
     client:

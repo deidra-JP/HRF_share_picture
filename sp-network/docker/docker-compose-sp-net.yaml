@@ -12,8 +12,8 @@ volumes:
   peer0.org3.example.com:  
 
 networks:
-  sp:
-    name: sp
+  fabric_sp:
+    name: fabric_sp
 services:
 
   orderer.example.com:
@@ -58,7 +58,7 @@ services:
       - 7053:7053
       - 17050:17050
     networks:
-      - sp
+      - fabric_sp
 
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
@@ -97,7 +97,7 @@ services:
       - 7051:7051
       - 17051:17051
     networks:
-      - sp
+      - fabric_sp
 
   peer0.org2.example.com:
     container_name: peer0.org2.example.com
@@ -136,7 +136,7 @@ services:
       - 7151:7151
       - 17151:17151
     networks:
-      - sp
+      - fabric_sp
 
   peer0.org3.example.com:
     container_name: peer0.org3.example.com
@@ -175,7 +175,7 @@ services:
       - 7251:7251
       - 17251:17251
     networks:
-      - sp
+      - fabric_sp
 
   cli:
     container_name: cli
@@ -200,4 +200,4 @@ services:
       - peer0.org2.example.com
       - peer0.org3.example.com
     networks:
-      - sp
+      - fabric_sp
